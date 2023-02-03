@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  web_core:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
+    step:
+      - id: set-version
+        run: echo "SAFE_WEB_CORE_VERSION=${{ env.SAFE_WEB_CORE_VERSION }}" >> $GITHUB_OUTPUT
