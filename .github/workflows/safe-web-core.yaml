@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
-    step:
-      - id: set-version
+    steps:
+      - id: get-version
         run: echo "SAFE_WEB_CORE_VERSION=${{ env.SAFE_WEB_CORE_VERSION }}" >> $GITHUB_OUTPUT
