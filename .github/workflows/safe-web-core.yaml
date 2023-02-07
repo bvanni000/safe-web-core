@@ -40,7 +40,7 @@ jobs:
         run: cp Dockerfile ./web-core/Dockerfile
         
       - name: Output Dockerfile
-        run: cat /web-core/Dockerfile
+        run: cat ./web-core/Dockerfile
       
       - name: Set Docker Tag
         run: echo "DOCKER_TAG=${{ needs.env_vars.outputs.SAFE_WEB_CORE_VERSION }}-${GITHUB_SHA:0:7}-$(date +%s)" | tee $GITHUB_ENV
