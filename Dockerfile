@@ -1,0 +1,26 @@
+FROM node:16-alpine
+RUN apk add --no-cache libc6-compat git python3 py3-pip make g++
+
+WORKDIR /app
+COPY . .
+
+# install deps
+RUN yarn install
+
+ENV NODE_ENV production
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+RUN adduser -h /app -D app && \
+    chown -R app:app /app
+
+USER app
+
+CMD ["yarn", "static-serve"]
