@@ -8,6 +8,7 @@ jobs:
     outputs:
       version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
     steps:
+      - uses: actions/checkout@v3
       - name: Get safe-global/web-core version
         id: get-version
         run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION= .env)" >> $GITHUB_OUTPUT
