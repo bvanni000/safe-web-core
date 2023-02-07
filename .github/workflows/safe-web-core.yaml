@@ -30,4 +30,4 @@ jobs:
           repository: safe-global/web-core
           path: web-core
           ref: ${{ needs.env_vars.outputs.SAFE_WEB_CORE_VERSION }}
-      - run: ls -al
+      - run: ls -al web-core
