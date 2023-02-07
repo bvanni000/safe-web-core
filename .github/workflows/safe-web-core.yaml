@@ -18,4 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Output safe-global/web-core version
-        run: echo ${{ needs.web_core.get-version.outputs.version }}
+        run: echo ${{ needs.web_core.outputs.version }}
