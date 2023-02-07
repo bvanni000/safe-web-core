@@ -16,5 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: web_core
     steps:
+      - uses: actions/checkout@v3
       - name: Output safe-global/web-core version
         run: echo ${{ needs.web_core.get-version.outputs.version }}
