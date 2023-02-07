@@ -8,5 +8,12 @@ jobs:
     outputs:
       version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
     steps:
-      - id: get-version
-        run: echo "SAFE_WEB_CORE_VERSION=${{ env.SAFE_WEB_CORE_VERSION }}" >> $GITHUB_OUTPUT
+      - name: Get safe-global/web-core version
+        id: get-version
+        run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION=)" >> $GITHUB_OUTPUT
+  version_outputs:
+    runs-on: ubuntu-latest
+    needs: web_core
+    steps:
+      - name: Output safe-global/web-core version
+        run: echo ${{ needs.web_core.get-version.outputs.version }}
