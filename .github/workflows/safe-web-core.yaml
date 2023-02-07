@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Get safe-global/web-core version
         id: get-version
-        run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION=)" >> $GITHUB_OUTPUT
+        run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION= .env)" >> $GITHUB_OUTPUT
   version_outputs:
     runs-on: ubuntu-latest
     needs: web_core
