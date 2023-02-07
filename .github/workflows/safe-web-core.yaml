@@ -6,13 +6,13 @@ jobs:
   web_core:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
-      env_file: ${{ steps.use-env-file.outputs.SAFE_WEB_CORE_VERSION }}
+#       version: ${{ steps.get-version.outputs.SAFE_WEB_CORE_VERSION }}
+      SAFE_WEB_CORE_VERSION: ${{ steps.use-env-file.outputs.SAFE_WEB_CORE_VERSION }}
     steps:
       - uses: actions/checkout@v3
-      - name: Get safe-global/web-core version
-        id: get-version
-        run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION= .env)" | tee $GITHUB_OUTPUT
+#       - name: Get safe-global/web-core version
+#         id: get-version
+#         run: echo "SAFE_WEB_CORE_VERSION=$(grep SAFE_WEB_CORE_VERSION= .env)" | tee $GITHUB_OUTPUT
       - name: Use env file
         id: use-env-file
         run: grep -v '#' .env | tee $GITHUB_OUTPUT
@@ -21,7 +21,7 @@ jobs:
     needs: web_core
     steps:
       - uses: actions/checkout@v3
-      - name: Output safe-global/web-core version
-        run: echo ${{ needs.web_core.outputs.version }} | grep SAFE_WEB_CORE_VERSION=
+#       - name: Output safe-global/web-core version
+#         run: echo ${{ needs.web_core.outputs.version }} | grep SAFE_WEB_CORE_VERSION=
       - name: Output env file
-        run: echo ${{ needs.web_core.outputs.env_file }}
+        run: echo ${{ needs.web_core.outputs.SAFE_WEB_CORE_VERSION }}
